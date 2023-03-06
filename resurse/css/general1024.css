@@ -1,0 +1,21 @@
+html {
+    font-size: 14px;
+}
+
+body{
+    --spatiere-pagina: 30px;
+    --padding-sectiune: 10px;
+}
+
+#grid-pagina {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+            "z-prezentare z-prezentare"
+            "z-tabel z-evenimente"
+            "z-tabel z-anunturi"
+            "z-utilizatori-online z-date-ss"
+            "z-utilizatori-statistici z-utilizatori-statistici"
+            "z-diverse z-diverse";
+    gap: 5px 2px;
+}
