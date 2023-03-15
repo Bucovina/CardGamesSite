@@ -2,7 +2,7 @@ html {
     font-size: 12px;
 }
 
-body{
+body {
     --spatiere-pagina: 10px;
     --padding-sectiune: 5px;
 }
@@ -11,6 +11,6 @@ body{
     display: block;
 }
 
-#grid-pagina > *{
+#grid-pagina > * {
     margin-bottom: 10px;
 }

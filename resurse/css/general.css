@@ -2,19 +2,19 @@ html {
     font-size: 16px;
 }
 
-h1,h2,h3{
+h1, h2, h3 {
     font-weight: bold;
 }
 
-h1{
+h1 {
     font-size: 2rem;
 }
 
-h2{
+h2 {
     font-size: 1.5rem;
 }
 
-h3{
+h3 {
     font-size: 1.2rem;
 }
 
@@ -100,8 +100,8 @@ body > * {
 .sus {
     display: block;
     position: fixed;
-    bottom: 8px;
-    right: 8px;
+    bottom: 1rem;
+    right: 4rem;
     width: 1em;
     height: 1em;
     line-height: 0.9em;
@@ -142,17 +142,16 @@ th, td {
     border: 1px solid var(--culoare4);
 }
 
-tr:nth-child(even) td,
-tr:nth-child(odd) th {
-    border-top: 1px solid var(--culoare1);
-    border-bottom: 1px solid var(--culoare2);
+tr:nth-child(even) td, tr:nth-child(odd) th{
+    border-top: 1px solid var(--culoare3);
+    border-bottom: none;
 }
 
-tr:nth-child(odd) td,
-tr:nth-child(even) th {
-    border-top: 1px solid var(--culoare2);
-    border-bottom: 1px solid var(--culoare1);
+tr:nth-child(odd) td,tr:nth-child(odd) th {
+    border-top: 1px solid var(--culoare4);
+    border-bottom: none;
 }
+
 
 tr:hover {
     outline: 5px solid #49EBD270;
@@ -163,6 +162,7 @@ header, footer {
     background-color: var(--culoare1);
     color: white;
     padding: 10px;
+    box-shadow: 0 0 5px var(--culoare1);
 }
 
 header {
@@ -179,7 +179,7 @@ img {
     max-width: 400px;
 }
 
-iframe{
+iframe {
     width: 100%;
     max-width: 600px;
 }
@@ -188,7 +188,7 @@ iframe{
     font-size: xxx-large;
 }
 
-.link-iframe{
+.link-iframe {
     width: var(--latime-buton);
     height: var(--invaltime-buton);
     background: var(--culoare3);
@@ -199,10 +199,33 @@ iframe{
     transition: background-color 0.3s linear;
 }
 
-.link-iframe:hover{
+.link-iframe:hover {
     background: var(--culoare4);
 }
 
-.taburi-iframe{
+.taburi-iframe {
     display: flex;
+    justify-content: right;
+}
+
+header, body, footer {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+/*main{     ///Nu arata bine
+    margin-top: 100px;
+}*/
+
+#unuPlusUnu{
+    color: #EA5455;
+    font-style: italic;
+}
+
+#plus{
+    font-style: italic;
+}
+
+.watermark{
+    display: none;
 }

@@ -1,0 +1,38 @@
+body {
+    --inaltime-meniu: 25px;
+    --latime-buton: 100px;
+}
+
+#hamburger {
+    display: block;
+    margin: 0;
+}
+
+#hamburger > img {
+    height: var(--inaltime-meniu);
+    width: auto;
+    display: block;
+    margin: 0;
+}
+
+ul.meniu {
+    display: none;
+}
+
+#ch-menu:checked + ul.meniu {
+    display: block;
+    animation: rotate-menu 0.5s linear;
+}
+
+@keyframes rotate-menu {
+    0% {
+        transform: rotate(270deg);
+        opacity: 0.5;
+        transform-origin: top left;
+    }
+    100% {
+        transform: rotate(360deg);
+        opacity: 1;
+        transform-origin: top left;
+    }
+}

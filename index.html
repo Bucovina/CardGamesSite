@@ -21,12 +21,19 @@
     <meta name="theme-color" content="#ffffff">
     <!--CSS-->
     <link rel="stylesheet" href="resurse/css/reset.css">
+
     <link rel="stylesheet" href="resurse/css/general.css" type="text/css">
     <link rel="stylesheet" href="resurse/css/general1024.css" type="text/css" media="screen  and (max-width: 1024px)">
     <link rel="stylesheet" href="resurse/css/general768.css" type="text/css" media="screen  and (max-width: 768px)">
+
     <link rel="stylesheet" href="resurse/css/nav.css">
+    <link rel="stylesheet" href="resurse/css/nav1024.css" type="text/css" media="screen  and (max-width: 1024px)">
+    <link rel="stylesheet" href="resurse/css/nav768.css" type="text/css" media="screen  and (max-width: 768px)">
+
+    <link rel="stylesheet" href="resurse/css/print.css" type="text/css" media="print">
     <!--FontAsesome-->
     <script src="https://kit.fontawesome.com/b60ff0f896.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
     <!--GoogleAPI-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,12 +45,13 @@
 </header>
 <nav>
     <label id="hamburger" for="ch-menu">
-        <img src="resurse/imagini/Hamburger_icon_alb.png" alt="menu">
+        <img src="resurse/img/Hamburger_icon_alb.png" alt="menu">
     </label>
     <input id="ch-menu" type="checkbox">
     <ul class="meniu">
         <li>
-            <div>Acasa</div>
+            <div id="acasa">Acasa</div>
+            <div id="casuta_mediu"><span class="fas fa-regular fa-house"></span></div>
             <ul>
                 <li><a href="#prezentare">Prezentare</a></li>
                 <li><a href="#anunturi">Anunturi</a></li>
@@ -88,7 +96,7 @@
                 <br>
                 Inspirat de această oportunitate, am decis să îți pui în aplicare planul de a înființa o companie care
                 să se specializeze în vânzarea de cărți de joc și jocuri de societate de calitate superioară. Am început
-                cu un mic magazin, cu o selecție limitată de produse, dar cu timpul ai adăugat mai multe și mai
+                cu un mic magazin, cu o selecție limitată de produse, dar cu timpul am adăugat mai multe și mai
                 diverse jocuri în portofoliu. Și pentru că pasiunea pentru jocuri este contagioasă, mulți clienți au
                 venit din recomandări ale altor pasionați și, astfel, afacerea a început să crească.
                 <br>
@@ -166,9 +174,9 @@
             <p>Pachet de carti poker Bicycle <br>
                 <math xmlns="http://www.w3.org/1998/Math/MathML">
                     <mrow>
-                        <mn>1</mn>
-                        <mo>+</mo>
-                        <mn>1</mn>
+                        <mn id="unuPlusUnu">1</mn>
+                        <mo id="plus">+</mo>
+                        <mn id="unuPlusUnu">1</mn>
                     </mrow>
                 </math>
                 la pretul special de: 45lei
@@ -210,13 +218,20 @@
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
             <div class="taburi-iframe">
-                <a href="https://www.youtube.com/embed/W1ET09YzYLw" class="link-iframe" target="ifr-video">Review Monopoly Pokemon</a>
-                <a href="https://www.youtube.com/embed/4nz-_hvFw44" class="link-iframe" target="ifr-video">Reguli Monopoly</a>
+                <a href="https://www.youtube.com/embed/W1ET09YzYLw" class="link-iframe" target="ifr-video">Review
+                    Monopoly Pokemon</a>
+                <a href="https://www.youtube.com/embed/4nz-_hvFw44" class="link-iframe" target="ifr-video">Reguli
+                    Monopoly</a>
             </div>
         </div>
     </section>
 </main>
+<div class="watermark">
+    <div>Tudor</div>
+    <div>Coriciuc</div>
+</div>
 <footer>
+    <p id="banner">Acesta este un proiect școlar!</p>
     <a href="#" class="sus" title="Sus!">&#5123</a>
     <br>
     <a href="tel:+40712345678">Numar de telefon: 0712345678</a>

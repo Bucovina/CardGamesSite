@@ -1,63 +1,60 @@
-#hamburger, #ch-menu{
+#hamburger, #ch-menu {
     display: none;
 }
 
-body{
-    --inaltime-meniu: 25px;
-    --latime-buton:150px;
+body {
+    --inaltime-meniu: 35px;
+    --latime-buton: 150px;
     --culoare-meniu: var(--culoare3);
     --culoare-border-buton: black;
 }
 
-nav{
+nav {
+    z-index: 1;
     --text-meniu: black;
-    background-color: var(--culoare-meniu);
+    /*background-color: var(--culoare-meniu);*/
+    background: transparent;
     width: calc(100vw - 15px);
     height: var(--inaltime-meniu);
     position: sticky;
     top: 0;
-    margin-left:calc(-1*var(--spatiere-pagina));
+    margin-left: calc(-1 * var(--spatiere-pagina));
 }
 
-ul.meniu,ul.meniu ul{
+ul.meniu, ul.meniu ul {
     padding: 0;
     margin: 0;
     list-style: none;
 }
 
-ul.meniu{
+ul.meniu {
     display: flex;
+    /*justify-content: start;*/
     justify-content: center;
+    flex-wrap: wrap;
 }
 
-ul.meniu li{
+ul.meniu > li {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: var(--latime-buton);
+}
+
+ul.meniu li {
+    position: relative;
     width: var(--latime-buton);
     height: var(--inaltime-meniu);
     background-color: var(--culoare-meniu);
     overflow: hidden;
     text-align: center;
-    border: 1px solid var(--culoare-border-buton);
+    border-top: 1px solid var(--culoare-border-buton);
+    border-right: 1px solid var(--culoare-border-buton);
+    border-left: 1px solid var(--culoare-border-buton);
     transition: background-color 0.3s linear;
+    box-sizing: border-box;
 }
 
-ul.meniu li:hover{
-    overflow: visible;
-    background-color: var(--culoare4);
-}
-
-ul.meniu ul{
-    opacity: 0;
-    transition: all 0.3s linear;
-    transform: scale(0,0);
-    transform-origin: center top;
-}
-
-ul.meniu li:hover ul{
-    opacity: 1;
-    transform: scale(1,1);
-}
-
-ul.meniu li div, ul.meniu li a{
+ul.meniu li div, ul.meniu li a {
     display: block;
     width: 100%;
     height: 100%;
@@ -65,4 +62,49 @@ ul.meniu li div, ul.meniu li a{
     text-decoration: none;
     font-weight: bold;
     line-height: var(--inaltime-meniu);
+}
+
+ul.meniu li:hover{
+    overflow: visible;
+    background-color: var(--culoare4);
+}
+
+ul.meniu ul li a:hover{
+    color: white;
+}
+
+ul.meniu ul {
+    opacity: 0;
+    transition: all 0.3s linear;
+    transform: scale(0, 0);
+    transform-origin: center top;
+}
+
+ul.meniu li:hover ul {
+    opacity: 1;
+    transform: scale(1, 1);
+}
+
+
+#casuta_mediu {
+    display: none;
+}
+
+
+ul.meniu>li:before{
+    content: '';
+    position: absolute;
+    left: -1px;
+    width: var(--latime-buton);
+    height: 35px;
+    background-color: var(--culoare3);
+    border-right: 1px solid var(--culoare-border-buton);
+    border-left: 1px solid var(--culoare-border-buton);
+    border-bottom: 1px solid var(--culoare-border-buton);
+    z-index: -1;
+    transition: background-color 1s ease;
+}
+
+ul.meniu>li:hover::before{
+    background: linear-gradient(to right, var(--culoare3), white);
 }
