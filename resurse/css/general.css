@@ -142,12 +142,12 @@ th, td {
     border: 1px solid var(--culoare4);
 }
 
-tr:nth-child(even) td, tr:nth-child(odd) th{
+tr:nth-child(even) td, tr:nth-child(odd) th {
     border-top: 1px solid var(--culoare3);
     border-bottom: none;
 }
 
-tr:nth-child(odd) td,tr:nth-child(odd) th {
+tr:nth-child(odd) td, tr:nth-child(odd) th {
     border-top: 1px solid var(--culoare4);
     border-bottom: none;
 }
@@ -181,7 +181,16 @@ img {
 
 iframe {
     width: 100%;
+    display: block;
+}
+
+.iframe {
     max-width: 600px;
+}
+
+.taburi-iframe {
+    display: flex;
+    justify-content: right;
 }
 
 .fa-critical-role {
@@ -217,15 +226,16 @@ header, body, footer {
     margin-top: 100px;
 }*/
 
-#unuPlusUnu{
+#unuPlusUnu {
     color: #EA5455;
     font-style: italic;
 }
 
-#plus{
+#plus {
     font-style: italic;
 }
 
-.watermark{
+.watermark {
     display: none;
 }
+

@@ -50,7 +50,7 @@ ul.meniu li {
     border-top: 1px solid var(--culoare-border-buton);
     border-right: 1px solid var(--culoare-border-buton);
     border-left: 1px solid var(--culoare-border-buton);
-    transition: background-color 0.3s linear;
+    border-bottom: 1px solid var(--culoare-border-buton);
     box-sizing: border-box;
 }
 
@@ -66,11 +66,11 @@ ul.meniu li div, ul.meniu li a {
 
 ul.meniu li:hover{
     overflow: visible;
-    background-color: var(--culoare4);
 }
 
 ul.meniu ul li a:hover{
     color: white;
+    overflow: visible;
 }
 
 ul.meniu ul {
@@ -81,6 +81,8 @@ ul.meniu ul {
 }
 
 ul.meniu li:hover ul {
+    position: absolute;
+    z-index: 1;
     opacity: 1;
     transform: scale(1, 1);
 }
@@ -90,21 +92,17 @@ ul.meniu li:hover ul {
     display: none;
 }
 
-
 ul.meniu>li:before{
     content: '';
     position: absolute;
-    left: -1px;
-    width: var(--latime-buton);
-    height: 35px;
-    background-color: var(--culoare3);
-    border-right: 1px solid var(--culoare-border-buton);
-    border-left: 1px solid var(--culoare-border-buton);
-    border-bottom: 1px solid var(--culoare-border-buton);
-    z-index: -1;
-    transition: background-color 1s ease;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--culoare3), white);
+    transition: width 1s ease;
 }
 
 ul.meniu>li:hover::before{
-    background: linear-gradient(to right, var(--culoare3), white);
+    width: calc(var(--latime-buton) - 2px);
 }
