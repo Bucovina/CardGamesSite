@@ -1,0 +1,23 @@
+@use '../../node_modules/bootstrap/scss/bootstrap.scss' with
+(
+$primary: #EA5455,
+$secondary: #679E49,
+$h1-font-size: 32px,
+$h2-font-size: 24px,
+$h3-font-size: 21px,
+$accordion-border-radius: 5px,
+$container-max-widths:(
+  sm:500px,
+  md:700px,
+  lg:1000px,
+),
+$link-hover-color: 299E8C,
+$font-family-sans-serif: system-ui,
+
+    $form-range-track-cursor:         pointer,
+    $form-range-track-bg:             lightgreen,
+    $form-range-thumb-active-bg:               green,
+    $form-range-thumb-bg:                       green,
+    $form-range-thumb-width:                   1.5rem,
+    $form-range-thumb-focus-box-shadow: lightgreen,
+);

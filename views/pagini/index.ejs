@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <title>Cards and Board Games</title>
+    <meta name="keywords" content="cărți de joc, pokemon, yu-gi-oh, cărți, jocuri de societate, board-games, monopoly">
+    <meta name="description"
+          content="Cards and Board Games este locul perfect pentru toti pasionatii de jocuri de carti si multe altele">
+
+    <%- include("../fragmente/head.ejs") %>
+
+</head>
+
+<body>
+<%- include("../fragmente/header.ejs") %>
+
+<main id="grid-pagina">
+    <section id="prezentare">
+        <h2>Despre noi si magazinul nostru</h2>
+        <section>
+            <h3>Cine suntem noi?</h3>
+            <p>Aici, la Cards and Board Games, suntem specializati in comercializarea de:</p>
+            <ul>
+                <li>carti de joc</li>
+                <li>jocuri de societate</li>
+                <li><s>figurine</s></li>
+            </ul>
+            <p>Indiferent ca este vorba de tipicile carti pentru <b>poker</b> sau <i lang="en">trading
+                    cards</i>, cum ar
+                fi
+                <b>Pokemon</b> sau <b>Yu-gi-oh!</b> , cu siguranta veti gasi ceva pe placul vostru! Pentru
+                serile in
+                familie
+                sau cu prietenii, va punem la dispozitie o varietate de <b>jocuri de societate</b> pentru toate
+                varstele
+                si
+                pentru toate gusturile.
+            </p>
+        </section>
+        <section>
+            <h3>Povestea noastra</h3>
+            <p>Suntem o echipa de tineri pasionati de pasionati de jocurile de societate și cărțile de joc. Ne
+                amintim
+                cu drag de momentele petrecute cu familia și prietenii jucând jocuri precum <b>Monopoly</b>,
+                <b>Clue</b>
+                și<b> Poker</b>. Dar cu timpul, am observat că în piața locală nu exista o varietate prea mare
+                de
+                jocuri și cărți de joc interesante sau de calitate.
+                <br>
+                Cu această idee în minte, am început să cercetam în profunzime despre jocurile de societate și
+                cărțile
+                de joc. Am vorbit cu producători și distribuitori și am căutat cele mai bune surse pentru
+                achiziționarea
+                produselor. Am studiat cu atenție piața și am descoperit că există o cerere ridicată pentru
+                jocuri de
+                societate și cărți de joc de calitate superioară, dar puține companii care oferă aceste produse.
+                <br>
+                Inspirat de această oportunitate, am decis să îți pui în aplicare planul de a înființa o
+                companie care
+                să se specializeze în vânzarea de cărți de joc și jocuri de societate de calitate superioară. Am
+                început
+                cu un mic magazin, cu o selecție limitată de produse, dar cu timpul am adăugat mai multe și mai
+                diverse jocuri în portofoliu. Și pentru că pasiunea pentru jocuri este contagioasă, mulți
+                clienți au
+                venit din recomandări ale altor pasionați și, astfel, afacerea a început să crească.
+                <br>
+                Cu timpul, compania s-a dezvoltat și am extins gama de produse, inclusiv jocuri de strategie,
+                jocuri
+                de cuvinte, jocuri de rol și multe altele. În continuare, ne propunem să extindem afacerea și să
+                aducem
+                mai multe jocuri interesante și inovatoare clienților nostri, ajutându-i să descopere lumea
+                fascinantă
+                a jocurilor de societate și cărților de joc.
+            </p>
+        </section>
+    </section>
+    <section id="tabel">
+        <div class="tabel-container">
+            <table>
+                <caption>Date importante</caption>
+                <thead>
+                <tr>
+                    <th>Eveniment</th>
+                    <th>Data</th>
+                    <th>Locație</th>
+                    <th colspan="2">Descriere</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td rowspan="2">Lansare produs nou</td>
+                    <td>15 mai 2023</td>
+                    <td>Magazinul principal</td>
+                    <td colspan="2">Produsul va fi disponibil pentru a fi cumpărat în magazin și online.
+                    </td>
+                </tr>
+                <tr>
+                    <td>16 mai 2023</td>
+                    <td>Magazinul principal</td>
+                    <td colspan="2">Echipa noastră va fi acolo să ofere demonstrații și mostre gratuite.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Intalnire</td>
+                    <td>10 iunie 2023</td>
+                    <td>Sediul unui posibil partener
+                        <i class="fa-brands fa-critical-role fa-flip"
+                           style="--fa-animation-duration: 5s;"></i>
+                    </td>
+                    <td colspan="2">Specialistii nostri in marketing discuta un potential parteneriat</td>
+                </tr>
+                <tr>
+                    <td>Aniversare 3 ani!</td>
+                    <td>25 septembrie 2023</td>
+                    <td>Toate magazinele</td>
+                    <td colspan="2">Toți cumparatorii sunt așteptați să participe și să sărbătorească!
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="5">Pentru mai multe informatii veniti in cel mai apropiat magazin =)</td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </section>
+    <section id="evenimente">
+        <div class="refelectie-container">
+            <br>
+            <h2 class="dereflectat">Evenimente viitoare</h2>
+            <h2 class="reflectie">Evenimente viitoare</h2>
+        </div>
+        <h3>Discount pentru seniori</h3>
+        <video controls poster="/resurse/img/video-cards.jpg" width="100%" preload="auto">
+            <source src="/resurse/vid/oldcards.mp4" type="video/mp4">
+            <source src="/resurse/vid/oldcards.avi" type="video/avi">
+            <track label="Română" kind="subtitles" srclang="ro" src="/resurse/sub/rosub.vtt" default>
+            <track label="English" kind="subtitles" srclang="en" src="/resurse/sub/engsub.vtt">
+            Error!
+        </video>
+    </section>
+    <section id="anunturi">
+        <h2>Anunturi</h2>
+        <details>
+            <summary>Stiri</summary>
+            <strong>Deschidem doua noi magazine!</strong>
+            Acum ne puteti gasi si in judetele Cluj si Sibiu!
+        </details>
+        <details>
+            <summary>Promotii</summary>
+            <p>Joc de societate Monopoly Pokemon <br> Pret special: <s>300</s> 240lei</p>
+            <p>Pachet de carti poker Bicycle <br>
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mrow>
+                        <mn id="unuPlusUnu">1</mn>
+                        <mo id="plus">+</mo>
+                        <mn id="unuPlusUnu">1</mn>
+                    </mrow>
+                </math>
+                la pretul special de: 45lei
+            </p>
+        </details>
+    </section>
+    <section id="utilizatori-online">
+        <h2>Utilizatori online</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, distinctio dolore dolorum eum
+            illum
+            laboriosam obcaecati. Aspernatur doloribus officia quas recusandae voluptate? Architecto
+            consequuntur
+            praesentium quidem ut? Cupiditate, iste, soluta!</p>
+    </section>
+    <section id="utilizatori-statistici">
+        <h2>Date despre utilizatori si statistici</h2>
+        <p>
+            ip: <%- locals.ip %>
+        </p>
+        <p>
+            Suma: <%- locals.a + locals.b %>
+        </p>
+        <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjEpeuW0YH-AhUR57sIHR-xAcYQFnoECCsQAQ&url=https%3A%2F%2Fcritrole.com%2F&usg=AOvVaw1R_H2Zky3KO2wEpMIMxwH7">Link
+            de test</a>
+    </section>
+    <section id="date-ss">
+        <h2>Date despre site si server</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <div class="hr-container">
+            <hr>
+        </div>
+        <p>Aspernatur, deleniti distinctio dolore
+            eligendi eum eveniet excepturi fugit incidunt ipsa ipsum magnam minima molestias natus numquam
+            officia quisquam quo sit vel?</p>
+    </section>
+    <section id="diverse">
+        <h2>Oferte Speciale</h2>
+        <figure>
+            <picture>
+                <source media="(max-width:800px)" srcset="/resurse/img/pokemon-cards-small.jpg"/>
+                <source media="(max-width:1000px)" srcset="/resurse/img/pokemon-cards-medium.jpg"/>
+                <img src="/resurse/img/pokemon-cards.jpg" alt="Carti de joc pokemon"/>
+            </picture>
+            <figcaption>Carti de joc Pokemon</figcaption>
+        </figure>
+        <a href="/resurse/img/pokemon-cards.jpg" download>Descarcati imaginea de mai sus!</a>
+        <br>
+        <div class="iframe">
+            <iframe name="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/W1ET09YzYLw"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            <div class="taburi-iframe">
+                <a href="https://www.youtube.com/embed/W1ET09YzYLw" class="link-iframe"
+                   target="ifr-video">Review
+                    Monopoly</a>
+                <a href="https://www.youtube.com/embed/4nz-_hvFw44" class="link-iframe"
+                   target="ifr-video">Reguli
+                    Monopoly</a>
+            </div>
+        </div>
+        <br>
+        <div id="grid-galerie">
+            <% var number = 0;
+                    for (let imag of locals.imagini) {
+                d = new Date();
+                var v_luni = ["ianuarie", "februarie",
+                    "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"]
+            if(imag.luni && number < 12  && imag.luni.includes(v_luni[d.getMonth()])){
+                number++;
+            %>
+            <figure id="generalfig">
+                <picture id="galerieimg">
+                    <source srcset="<%- imag.fisier_mediu %>" media="(max-width:1000px)"/>
+                    <img src="<%- imag.cale_fisier %>" alt="<%- imag.alt %>" title="<%- imag.text_descriere %>">
+                </picture>
+                <figcaption id="galeriefig"><%- imag.titlu %></figcaption>
+            </figure>
+            <div id="cell"></div>
+            <% } %>
+            <% } %>
+        </div>
+    </section>
+</main>
+<%- include("../fragmente/footer.ejs") %>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<script src="/resurse/js/tema.js"></script>
+<header>
+    <h1><i class="fa-solid fa-puzzle-piece"></i> Cards and Board Games <i class="fa-solid fa-dice"></i></h1>
+</header>
+<nav>
+    <label id="hamburger" for="ch-menu">
+        <img src="resurse/img/Hamburger_icon_alb.png" alt="menu">
+    </label>
+    <input id="ch-menu" type="checkbox">
+    <ul class="meniu">
+        <li>
+            <div id="acasa">Acasa</div>
+            <div id="casuta_mediu"><span class="fas fa-regular fa-house"></span></div>
+            <ul>
+                <li><a href="/">Principal</a></li>
+                <li><a href="#prezentare">Prezentare</a></li>
+                <li><a href="#anunturi">Anunturi</a></li>
+                <li><a href="#diverse">Oferte</a></li>
+            </ul>
+        </li>
+        <li>
+            <div>Produse</div>
+            <ul>
+                <li><a href="/produse">Toate</a></li>
+                <% for (let opt of locals.optiuniMeniu) { %>
+                    <li><a href="/produse?tip=<%- opt.unnest %>" style="text-decoration:none"><%- opt.unnest %></a></li>
+                <% } %>
+            </ul>
+        </li>
+        <li><a href="">Contact</a></li>
+        <li><a href="">Suport Clienti</a></li>
+        <li><div>Teme</div>
+        <ul>
+            <li>
+                <button id="tema">Schimba tema</button>
+            </li>
+        </ul>
+        </li>
+    </ul>
+</nav>

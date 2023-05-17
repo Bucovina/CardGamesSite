@@ -28,12 +28,22 @@ body {
     --culoare2: #90EB60;
     --culoare3: #299E8C;
     --culoare4: #49EBD2;
+    --background-white:white;
     --padding-sectiune: 15px;
     --spatiere-pagina: 55px;
     --culoare-fundal-inchis: #C886FF;
     --latime-buton: 200px;
     --invaltime-buton: 35px;
     margin: 0;
+}
+
+body.dark{
+    --culoare-background: black;
+    --culoare1: grey;
+    --culoare2: lightgrey;
+    --culoare3: grey;
+    --culoare4: lightgrey;
+    --background-white:white;
 }
 
 body {
@@ -44,7 +54,7 @@ body {
 }
 
 body > * {
-    background: white;
+    background: var(--background-white);
 }
 
 #grid-pagina {
@@ -239,3 +249,118 @@ header, body, footer {
     display: none;
 }
 
+video{
+    width: 100%;
+    min-width: 300px;
+    max-width: 800px;
+}
+
+::cue{
+    background: linear-gradient( var(--culoare3), var(--culoare1));
+    /*background: linear-gradient( red, blue);*/
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 20px;
+    font-weight: bold;
+    display: none;
+}
+
+main a{
+    background-image: radial-gradient(circle, var(--culoare1) 0%, var(--culoare1) 40%, transparent 80%, transparent 100%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 0;
+    transition: background 1s linear;
+}
+
+main a:hover{
+    background-size: 100%;
+}
+
+main a:visited{
+    color: var(--culoare2);
+}
+
+main a:active{
+    border: 1px solid black;
+}
+
+main a[href^="http"]::before{
+    content: "\2BB3";
+}
+
+main a[href^="http"]:hover::before{
+    color: var(--culoare-background)
+}
+
+.hr-container {
+    position: relative;
+    margin-top: 20px;
+}
+
+hr{
+    border: none;
+    border-top: 1px solid black;
+}
+
+hr:before, hr:after{
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: -5px;
+    content: "";
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+
+hr::before{
+    left: 0;
+    border-left: 5px solid black;
+}
+
+hr::after{
+    right: 0;
+    border-right: 5px solid black;
+}
+
+.refelectie-container{
+    position: relative;
+    display: block;
+    transition: color linear 1s;
+}
+
+.refelectie-container:hover{
+    color: var(--culoare2);
+}
+
+.dereflectat{
+    position: relative;
+    transform: rotateZ(350deg) rotateY(45deg);
+    transform-origin: 0 0 ;
+}
+
+.reflectie{
+    position:absolute;
+    left:0;
+    top:100%;
+    transform-origin:0 0;
+    /*conetaza ordinea transformarilor!*/
+    transform: rotateZ(10deg)translate(315px,-85px) rotateY(225deg);
+}
+
+#galeriefig {
+    transition: transform 1s linear;
+}
+
+#galerieimg{
+    transition: filter 100ms linear;
+}
+
+#generalfig:hover #galeriefig{
+    transform: scale(150%);
+}
+
+#generalfig:hover #galerieimg{
+    filter: contrast(200%);
+}

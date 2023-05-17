@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html  lang="ro">
+    <head>
+        <meta name="description" content="Cofetaria Dulcelind ofera prajituri, torturi, produse de patiserie cu optiunea de achizitie online si livrare prin curier.">
+        <meta name="keywords" content="cofetarie, Dulcelind, prajituri, torturi, dulce, pateuri, produse">
+        
+        <title>Cards and Board Games</title>
+        <%- include("../fragmente/head") %>     
+<!--        <link href="/resurse/css/produs.css" type="text/css" rel="stylesheet" />-->
+    </head>
+    <body>
+    <%- include("../fragmente/header") %>
+
+    <main>
+        <section>
+            <h2>Pagină produs</h2>
+                <article id="art-produs">
+                    <figure class="imag-produs">
+                        <img  src="/resurse/imagini/produse/<%- locals.prod.imagine %>" alt="[imagine <%- locals.prod.nume %>]" />
+                    </figure>
+                    <h3><span class="nume"><%- locals.prod.nume %></span></h3>
+                    <p>Pret: <span class="pret"><%- locals.prod.pret %> </span></p>
+                    <p>Descriere: <span class="descriere"><%- locals.prod.descriere %> </span></p>
+                    <p>Categorie produs: <span class="categorie_produs"><%- locals.prod.categorie_produs %> </span></p>
+                    <p>Producator: <span class="producator"><%- locals.prod.producator %> </span></p>
+                    <p>Material: <span class="material"><%- locals.prod.material %> </span></p>
+                    <p>Componente: <span class="componente"><%- locals.prod.componente %> </span></p>
+                    <p>Puncte loialitate: <span class="puncte_loialitate"><%- locals.prod.puncte_loialitate %> </span></p>
+                    <p>Colectie: <span class="colectie"><%- locals.prod.colectie %> </span></p>
+                    <% d=prod.data_adaugare;
+                    var v_luna = ["Ianuarie","Februarie","Martie","Aprilie","Mai","Iunie","Iulie","August","Septembrie","Octombrie","Noiembrie","Decembrie"];
+                    var luna = v_luna[d.getMonth()-1];
+                    var v_zi=["Luni","Marti","Miercuri","Joi","Vineri","Sambata","Duminica"];
+                    var zi=v_zi[d.getDay()-1]; %>
+                    <p>Data: <time datetime="<%d.toUTCString()%>" class="val-data"><%-zi%>, <%-d.getDay()%>-<%-luna%>-<%-d.getFullYear()%></time></p>
+                </article>
+        </section>
+    </main>
+
+    <%- include("../fragmente/footer") %>
+    </body>
+</html>

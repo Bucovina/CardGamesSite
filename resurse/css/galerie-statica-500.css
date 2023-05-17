@@ -1,0 +1,11 @@
+@media screen and (max-width:768px){
+    #grid-galerie {
+        display:block;
+    }
+
+    #cell {
+        display: none;
+    }
+}
+
+
