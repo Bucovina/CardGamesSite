@@ -4,11 +4,12 @@
     <meta name="description"
           content="Cofetaria Dulcelind ofera prajituri, torturi, produse de patiserie cu optiunea de achizitie online si livrare prin curier.">
     <meta name="keywords" content="cofetarie, Dulcelind, prajituri, torturi, dulce, pateuri, produse">
-    <link rel="stylesheet" href="/resurse/css/produse.css" type="text/css"/>
     <title>Cards and Board Games</title>
     <%- include("../fragmente/head") %>
     <script type="text/javascript" src=/resurse/js/produse.js></script>
-
+    <link rel="stylesheet" href="/resurse/css/produse.css" type="text/css"/>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
 </head>
 <body>
 <%- include("../fragmente/header") %>
@@ -77,16 +78,16 @@
     <section id="produse">
         <h2>Produse</h2>
         <div class="grid-produse">
-            <% for( let prod of locals.produse) { %>
+            <%for( let prod of locals.produse) { %>
                 <article class="produs">
                     <h3 class="nume">Nume: <a href="/produs/<%- prod.id %>"><span
                                     class="val-nume"><%- prod.nume %></span></a></h3>
                     <h5>Categorie: <span class="val-categorie"><%- prod.categorie_produs %></span></h5>
 
-                    <figure>
+                    <figure id="text-imagine">
                         <figcaption class="val-descriere"><%- prod.descriere %></figcaption>
-                        <img src="/resurse/imagini/produse/<%- prod.imagine %>" style="width:50%;height:auto;"
-                             alt="[imagine <%- prod.nume %>]"/>
+                        <img src="/resurse/img/produse/<%- prod.imagine %>" style="width:50%;height:auto;"
+                                                   alt="[imagine <%- prod.nume %>]"/>
                     </figure>
 
                     <ul class="info-prod">
@@ -116,9 +117,20 @@
                         <input type="checkbox" class="select-cos" value="<%- prod.id %>" autocomplete="off">
                     </label>
                 </article>
-            <% } %>
+            <%} %>
         </div>
     </section>
+    <div class="accordion " id="accordionSection">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapse"  aria-expanded="false">Pentru mai multe detalii</button></h2>
+            <div class="accordion-collapse collapse " id="collapse" data-bs-parent="#accordionSection">
+                <div class="accordion-body">
+                    Pentru mai multe detalii contactati producatorul indicat in descrierea produsului
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 
 <%- include("../fragmente/footer") %>

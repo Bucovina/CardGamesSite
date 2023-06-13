@@ -1,4 +1,6 @@
 <script src="/resurse/js/tema.js"></script>
+<script src="/resurse/js/cookies.js"></script>
+
 <header>
     <h1><i class="fa-solid fa-puzzle-piece"></i> Cards and Board Games <i class="fa-solid fa-dice"></i></h1>
 </header>
@@ -12,10 +14,9 @@
             <div id="acasa">Acasa</div>
             <div id="casuta_mediu"><span class="fas fa-regular fa-house"></span></div>
             <ul>
-                <li><a href="/">Principal</a></li>
-                <li><a href="#prezentare">Prezentare</a></li>
-                <li><a href="#anunturi">Anunturi</a></li>
-                <li><a href="#diverse">Oferte</a></li>
+                <li><a href="/index#prezentare">Prezentare</a></li>
+                <li><a href="/index#anunturi">Anunturi</a></li>
+                <li><a href="/index#diverse">Oferte</a></li>
             </ul>
         </li>
         <li>
@@ -27,14 +28,41 @@
                 <% } %>
             </ul>
         </li>
+        <li><a href="/cos-virtual">Cos</a></li>
+        <li><a href="/inregistrare">Inregistrare</a></li>
         <li><a href="">Contact</a></li>
         <li><a href="">Suport Clienti</a></li>
-        <li><div>Teme</div>
-        <ul>
-            <li>
-                <button id="tema">Schimba tema</button>
+            <% if(locals?.utilizator?.areDreptul?.(Drepturi.vizualizareUtilizatori)) { %>
+        <li><div>Administrare</div>
+            <ul>
+                <li><a href="/useri">Useri</a></li>
+                <li><a href="/grafice">Grafice</a></li>
+                <li><a href="/comenzi">Comenzi</a></li>
+            </ul>
+        </li>
+        <% } %>
+        <% if(locals.utilizator) { %>
+            <li><div><%- locals.utilizator.username %></div>
+                <ul>
+                    <li><a href="/profil">Profil</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
             </li>
-        </ul>
+        <% } %>
+
+        <li>
+            <div>Teme</div>
+            <ul>
+                <li>
+                    <button id="normaltheme">Normal</button>
+                </li>
+                <li>
+                    <button id="darktheme">Dark</button>
+                </li>
+                <li>
+                    <button id="vaporeontheme">Vaporeon</button>
+                </li>
+            </ul>
         </li>
     </ul>
 </nav>

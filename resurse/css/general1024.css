@@ -19,3 +19,15 @@ body {
             "z-diverse z-diverse";
     gap: 5px 2px;
 }
+
+
+#banner{
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    background-color: var(--culoare1);
+}
