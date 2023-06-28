@@ -14,11 +14,10 @@ nav {
   --text-meniu: black;
   /*background-color: var(--culoare-meniu);*/
   background: transparent;
-  width: calc(100vw - 15px);
   height: var(--inaltime-meniu);
   position: sticky;
   top: 0;
-  margin-left: calc(-1 * var(--spatiere-pagina));
+
 }
 
 ul.meniu, ul.meniu ul {

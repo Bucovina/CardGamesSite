@@ -2,8 +2,8 @@
 <html lang="ro">
 <head>
     <meta name="description"
-          content="Cofetaria Dulcelind ofera prajituri, torturi, produse de patiserie cu optiunea de achizitie online si livrare prin curier.">
-    <meta name="keywords" content="cofetarie, Dulcelind, prajituri, torturi, dulce, pateuri, produse">
+          content="Cards and Board Games">
+    <meta name="keywords" content="cards, boardgames, games, produse">
     <title>Cards and Board Games</title>
     <%- include("../fragmente/head") %>
     <script type="text/javascript" src=/resurse/js/produse.js></script>
@@ -36,8 +36,9 @@
         </select>
     </label>
     <br>
+
     <label> Minim puncte de loialitate: <input type="range" id="inp-puncte" class="form-range" value="0" min="0"
-                                               max="30"><span id="infoRange">(0)</span></label>
+                                               max="<%- locals.puncte %>"><span id="infoRange">(0)</span></label>
     <label> Categorie:
         <select id="inp-categorie">
             <option id="sel-toate" selected value="toate">toate</option>
@@ -60,17 +61,29 @@
     <label for="browser">Material:</label>
     <input list="materiale" name="material" id="inp-material">
     <datalist id="materiale">
-        <option value="plastic">
-        <option value="metal">
-        <option value="cardboard">
-        <option value="glass">
+        <%
+        for (let materiale of locals.material){
+        %>
+        <option value="<%-materiale%>">
+        <%}%>
     </datalist>
     <p>
-        <button id="filtrare">Filtreaza</button>
-        <button id="resetare">Reseteaza</button>
+        <button id="filtrare"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+            </svg></i>Filtreaza</button>
+        <button id="resetare"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+            </svg></i>Reseteaza</button>
         <br/>
-        <button id="sortCrescNume">Sorteaza crescator</button>
-        <button id="sortDescrescNume">Sorteaza descrescator</button>
+        <button id="sortCrescNume"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-alpha-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M10.082 5.629 9.664 7H8.598l1.789-5.332h1.234L13.402 7h-1.12l-.419-1.371h-1.781zm1.57-.785L11 2.687h-.047l-.652 2.157h1.351z"/>
+                <path d="M12.96 14H9.028v-.691l2.579-3.72v-.054H9.098v-.867h3.785v.691l-2.567 3.72v.054h2.645V14zM4.5 2.5a.5.5 0 0 0-1 0v9.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L4.5 12.293V2.5z"/>
+            </svg>Sorteaza crescator</button>
+        <button id="sortDescrescNume"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-alpha-down-alt" viewBox="0 0 16 16">
+                <path d="M12.96 7H9.028v-.691l2.579-3.72v-.054H9.098v-.867h3.785v.691l-2.567 3.72v.054h2.645V7z"/>
+                <path fill-rule="evenodd" d="M10.082 12.629 9.664 14H8.598l1.789-5.332h1.234L13.402 14h-1.12l-.419-1.371h-1.781zm1.57-.785L11 9.688h-.047l-.652 2.156h1.351z"/>
+                <path d="M4.5 2.5a.5.5 0 0 0-1 0v9.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L4.5 12.293V2.5z"/>
+            </svg>Sorteaza descrescator</button>
     </p>
 
     <p id="p-suma">Apăsați Alt+"c" pentru suma preturilor produselor afișate. </p>
@@ -80,13 +93,14 @@
         <div class="grid-produse">
             <%for( let prod of locals.produse) { %>
                 <article class="produs">
+                    <span class="val-id" style="display: none"><%- prod.id %></span>
                     <h3 class="nume">Nume: <a href="/produs/<%- prod.id %>"><span
                                     class="val-nume"><%- prod.nume %></span></a></h3>
                     <h5>Categorie: <span class="val-categorie"><%- prod.categorie_produs %></span></h5>
 
                     <figure id="text-imagine">
                         <figcaption class="val-descriere"><%- prod.descriere %></figcaption>
-                        <img src="/resurse/img/produse/<%- prod.imagine %>" style="width:50%;height:auto;"
+                        <img src="/resurse/img/produse/<%- prod.imagine %>/1.jpg" style="width:50%;height:auto;"
                                                    alt="[imagine <%- prod.nume %>]"/>
                     </figure>
 
@@ -103,7 +117,7 @@
                             var zi = v_zi[d.getDay() - 1]; %>
                         <li class="data">Data:
                             <time datetime="<% d.toUTCString() %>" class="val-data"><%- zi %>, <%- d.getDay() %>
-                                -<%- luna %>
+                                -<%- d.getMonth()%>
                                 -<%- d.getFullYear() %></time>
                         </li>
                         <li class="colectie">Colectie: <span class="val-colectie"><%- prod.colectie %></span></li>
@@ -113,8 +127,11 @@
                     </ul>
 
                     <label class="selecteaza-cos">
-                        Selectează:<br/>
-                        <input type="checkbox" class="select-cos" value="<%- prod.id %>" autocomplete="off">
+                        Selectează: <input type="checkbox" class="select-cos" value="<%- prod.id %>" autocomplete="off">
+                        <br>
+                        <i class="fa fa-check" aria-hidden="true"></i> <input type="checkbox" class="salvare" value="<%- prod.id %>" autocomplete="off">
+                        <br>
+                        <i class="fa fa-times" aria-hidden="true"></i> <input type="checkbox" class="sters" value="<%- prod.id %>" autocomplete="off">
                     </label>
                 </article>
             <%} %>

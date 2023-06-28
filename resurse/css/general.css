@@ -46,6 +46,15 @@ body.dark{
     --background-white:white;
 }
 
+body.vapor{
+    --culoare-background: lightblue;
+    --culoare1: #7a7afa;
+    --culoare2: #31b7a9;
+    --culoare3: #a4e8b8;
+    --culoare4: #0977a1;
+    --background-white:white;
+}
+
 body {
     background: var(--culoare-background);
     padding-left: var(--spatiere-pagina);
@@ -394,4 +403,10 @@ hr::after{
         background-color: var(--culoare2);
         border-color: var(--culoare3);
     }
+}
+
+.theme{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
 }

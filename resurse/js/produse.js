@@ -1,32 +1,30 @@
-window.addEventListener("load", function () {
+window.addEventListener("DOMContentLoaded", function () {
 
-    let iduriProduse=localStorage.getItem("cos_virtual");
-    iduriProduse=iduriProduse?iduriProduse.split(","):[];      //["3","1","10","4","2"]
+    let iduriProduse = localStorage.getItem("cos_virtual");
+    iduriProduse = iduriProduse ? iduriProduse.split(",") : [];      //["3","1","10","4","2"]
 
-    for(let idp of iduriProduse){
+    for (let idp of iduriProduse) {
         let ch = document.querySelector(`[value='${idp}'].select-cos`);
-        if(ch){
-            ch.checked=true;
-        }
-        else{
+        if (ch) {
+            ch.checked = true;
+        } else {
             console.log("id cos virtual inexistent:", idp);
         }
     }
 
     //----------- adaugare date in cosul virtual (din localStorage)
-    let checkboxuri= document.getElementsByClassName("select-cos");
-    for(let ch of checkboxuri){
-        ch.onchange=function(){
-            let iduriProduse=localStorage.getItem("cos_virtual");
-            iduriProduse=iduriProduse?iduriProduse.split(","):[];
+    let checkboxuri = document.getElementsByClassName("select-cos");
+    for (let ch of checkboxuri) {
+        ch.onchange = function () {
+            let iduriProduse = localStorage.getItem("cos_virtual");
+            iduriProduse = iduriProduse ? iduriProduse.split(",") : [];
 
-            if( this.checked){
+            if (this.checked) {
                 iduriProduse.push(this.value)
-            }
-            else{
-                let poz= iduriProduse.indexOf(this.value);
-                if(poz != -1){
-                    iduriProduse.splice(poz,1);
+            } else {
+                let poz = iduriProduse.indexOf(this.value);
+                if (poz != -1) {
+                    iduriProduse.splice(poz, 1);
                 }
             }
 
@@ -35,11 +33,8 @@ window.addEventListener("load", function () {
 
     }
 
-    document.getElementById("inp-puncte").onchange = function () {
-        document.getElementById("infoRange").innerHTML = `(${this.value})`;
-    }
 
-    document.getElementById("filtrare").onclick = function () {
+    function filterProducts() {
         let val_nume = document.getElementById("inp-nume").value.toLowerCase();
         let radiobuttons = document.getElementsByName("gr_rad");
         let producator;
@@ -48,6 +43,20 @@ window.addEventListener("load", function () {
                 producator = r.value;
                 break;
             }
+        }
+
+        let salvare = document.getElementsByClassName("salvare");
+        let salvate = [];
+        for (s of salvare) {
+            if (s.checked)
+                salvate.push(s.value.toString());
+        }
+
+        let stergere = document.getElementsByClassName("sters");
+        let sterse = [];
+        for (st of stergere) {
+            if (st.checked)
+                sterse.push(st.value.toString());
         }
 
         let var_puncte = document.getElementById("inp-puncte").value;
@@ -72,20 +81,20 @@ window.addEventListener("load", function () {
                 minus_desc.push(vec.split("-")[1]);
         }
 
-        let val_pret=document.getElementById("inp-pret");
+        let val_pret = document.getElementById("inp-pret");
 
-        let pret_select=[];
+        let pret_select = [];
 
-        for (let pret of val_pret){
-            if(pret.selected){
+        for (let pret of val_pret) {
+            if (pret.selected) {
                 pret_select.push(pret.value);
             }
         }
 
-        let pret_min=[];
-        let pret_max=[];
+        let pret_min = [];
+        let pret_max = [];
 
-        for (let pret of pret_select){
+        for (let pret of pret_select) {
             pret_min.push(parseInt(pret.split('-')[0]));
             pret_max.push(parseInt(pret.split('-')[1]));
         }
@@ -94,6 +103,7 @@ window.addEventListener("load", function () {
 
         for (let prod of produse) {
             prod.style.display = "none";
+
             let nume = prod.getElementsByClassName("val-nume")[0].innerHTML.toLowerCase();
 
             let cond1 = (nume.includes(val_nume));
@@ -120,45 +130,91 @@ window.addEventListener("load", function () {
 
             let descriere = prod.getElementsByClassName("val-descriere")[0].innerHTML.toLowerCase();
 
-            let cond7=true;
+            let cond7 = true;
 
             for (let plus of plus_desc) {
-                cond7=false;
-                if (descriere.includes(' '+plus) || descriere.includes(plus+' ')) {
+                cond7 = false;
+                if (descriere.includes(' ' + plus) || descriere.includes(plus + ' ')) {
                     cond7 = true;
                     break;
                 }
             }
 
             for (let minus of minus_desc) {
-                if (descriere.includes(' '+minus) || descriere.includes(minus+' ')) {
+                if (descriere.includes(' ' + minus) || descriere.includes(minus + ' ')) {
                     cond7 = false;
                     break;
                 }
             }
 
-            if(val_descriere==='')
-                cond7=true;
+            if (val_descriere === '')
+                cond7 = true;
 
-            let pret=parseFloat(prod.getElementsByClassName("val-pret")[0].innerHTML);
+            let pret = parseFloat(prod.getElementsByClassName("val-pret")[0].innerHTML);
 
-            let cond8=false;
+            let cond8 = false;
 
-            for (let i=0; i<pret_min.length; i++)
-            {
-                if(pret_min[i]<=pret && pret<=pret_max[i]) {
+            for (let i = 0; i < pret_min.length; i++) {
+                if (pret_min[i] <= pret && pret <= pret_max[i]) {
                     cond8 = true;
                     break;
                 }
             }
 
-            if (pret_select.length===0)
-                cond8=true;
+            if (pret_select.length === 0)
+                cond8 = true;
 
             if (cond1 && cond2 && cond3 && cond4 && cond5 && cond6 && cond7 && cond8) {
                 prod.style.display = "block";
             }
+
+            let id = prod.getElementsByClassName("val-id")[0].innerHTML;
+
+            if (salvate.includes(id)) {
+                prod.style.display = "block";
+            }
+
+            if (sterse.includes(id)) {
+                prod.style.display = "none";
+            }
         }
+    }
+
+    document.getElementById("inp-nume").onchange = function () {
+        filterProducts();
+    }
+
+    document.getElementById("inp-categorie").onchange = function () {
+        filterProducts();
+    }
+
+    document.getElementById("inp-material").onchange = function () {
+        filterProducts();
+    }
+
+    document.getElementById("inp-descriere").onchange = function () {
+        filterProducts();
+    }
+
+    document.getElementById("inp-pret").onchange = function () {
+        filterProducts();
+    }
+
+    document.getElementsByName("gr_rad").forEach(function (radio) {
+        radio.onchange = function () {
+            filterProducts();
+        }
+    });
+
+    document.getElementById("inp-colectie").addEventListener("change", filterProducts);
+
+    document.getElementById("inp-puncte").onchange = function () {
+        document.getElementById("infoRange").innerHTML = `(${this.value})`;
+        filterProducts();
+    }
+
+    document.getElementById("filtrare").onclick = function () {
+        filterProducts();
     }
 
     document.getElementById("resetare").onclick = function () {
@@ -210,6 +266,18 @@ window.addEventListener("load", function () {
         sortare(-1);
     }
 
+    window.onchange = function (){
+        let count=0;
+        var produse = document.getElementsByClassName("produs");
+        for (let  prod of produse){
+            if (prod.style.display!=="none")
+                count++;
+        }
+        console.log(count)
+        if(count===0)
+            alert("Nu exista produse conform filtrării curente!")
+    }
+
     window.onkeydown = function (e) {
         if (e.key === "c" && e.altKey) {
             if (document.getElementById("info-suma"))
@@ -237,8 +305,8 @@ window.addEventListener("load", function () {
         }
     }
 
-   document.getElementById("inp-colectie").onchange=function toggleButtonClass() {
-       val_colectie = document.getElementById("inp-colectie");
+    document.getElementById("inp-colectie").onchange = function toggleButtonClass() {
+        val_colectie = document.getElementById("inp-colectie");
         if (val_colectie.checked) {
             document.getElementById("label-colectie").classList.remove("btn-outline-secondary");
             document.getElementById("label-colectie").classList.add("btn-secondary");

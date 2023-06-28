@@ -16,9 +16,8 @@
 
 <main id="grid-pagina">
     <section id="prezentare">
-
         <% if(!locals.utilizator) { %>
-            <form id="form_inreg"  method="post" class="date"  action="/login"  enctype="multipart/form-data">
+            <form id="form_inreg" method="post" class="date" action="/login" enctype="multipart/form-data">
                 <p>
                     <label>
                         Username: <input type="text" name="username" id="inp-username" value="" required>
@@ -26,16 +25,15 @@
                 </p>
                 <p>
                     <label>
-                        Parola: <input id="parl" type="password" required  name="parola" value="">
+                        Parola: <input id="parl" type="password" required name="parola" value="">
                     </label>
                 </p>
                 <p><input type="submit" value="Logare"></p>
             </form>
             <p><%- locals.mesajLogin %></p>
-        <% } else {%>
+        <% } else { %>
             <%- locals.succesLogin %>
-        <% }  %>
-
+        <% } %>
         <h2>Despre noi si magazinul nostru</h2>
         <section>
             <h3>Cine suntem noi?</h3>
@@ -184,32 +182,29 @@
     </section>
     <section id="utilizatori-online">
         <h2>Utilizatori online</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, distinctio dolore dolorum eum
-            illum
-            laboriosam obcaecati. Aspernatur doloribus officia quas recusandae voluptate? Architecto
-            consequuntur
-            praesentium quidem ut? Cupiditate, iste, soluta!</p>
+        <p>Printre utilizatorii acestui site se regăsesc jucători începători care descoperă fascinația jocurilor de
+            cărți pentru prima dată. Aceștia își folosesc timpul online pentru a învăța regulile, strategiile și tactici
+            specifice fiecărui joc, în timp ce se familiarizează cu interfața și funcționalitățile oferite de platformă.
+            Acești jucători novici sunt în căutarea unei provocări și a oportunității de a-și dezvolta abilitățile,
+            într-o atmosferă prietenoasă și lipsită de presiune.</p>
     </section>
     <section id="utilizatori-statistici">
         <h2>Date despre utilizatori si statistici</h2>
         <p>
-            ip: <%- locals.ip %>
-        </p>
-        <p>
-            Suma: <%- locals.a + locals.b %>
+            Utilizatori anonimi: <%- locals.a + locals.b %>
         </p>
         <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjEpeuW0YH-AhUR57sIHR-xAcYQFnoECCsQAQ&url=https%3A%2F%2Fcritrole.com%2F&usg=AOvVaw1R_H2Zky3KO2wEpMIMxwH7">Link
-            de test</a>
+            parteneri</a>
     </section>
     <section id="date-ss">
         <h2>Date despre site si server</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <p>
+            ip: <%- locals.ip %>
+        </p>
         <div class="hr-container">
             <hr>
         </div>
-        <p>Aspernatur, deleniti distinctio dolore
-            eligendi eum eveniet excepturi fugit incidunt ipsa ipsum magnam minima molestias natus numquam
-            officia quisquam quo sit vel?</p>
+        <p>Acest site a fost realizat de un student muncitor de la Facultatea de Matematica si Informatica Bucuresti!</p>
     </section>
     <section id="diverse">
         <h2>Oferte Speciale</h2>
@@ -237,13 +232,15 @@
             </div>
         </div>
         <br>
+        <h3>Ce parere aveti despre carti de joc inspirate de produse de patiserie? Lasati un Email!</h3>
+        <br>
         <div id="grid-galerie">
             <% var number = 0;
                     for (let imag of locals.imagini) {
                 d = new Date();
                 var v_luni = ["ianuarie", "februarie",
                     "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"]
-            if(imag.luni && number < 12  && imag.luni.includes(v_luni[d.getMonth()])){
+            if(imag.luni && number < 12 && imag.luni.includes(v_luni[d.getMonth()])){
                 number++;
             %>
             <figure id="generalfig">

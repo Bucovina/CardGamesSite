@@ -1,58 +1,99 @@
 <!DOCTYPE html>
-<html  lang="ro">
-    <head>
-        <meta name="description" content="Cofetaria Dulcelind - utilizatori.">
-        <meta name="keywords" content="cofetarie, Dulcelind, utilizatori">
-        <link rel="stylesheet" href="/resurse/css/useri.css" type="text/css" />
-        <title>Cofetăria Dulcelind - utilizatori</title>
-        <%- include("../fragmente/head") %>     
-        <script type="text/javascript" src=/resurse/js/produse.js></script>
-    </head>
-    <body>
-    <%- include("../fragmente/header") %>
+<html lang="ro">
+<head>
+    <meta name="description" content="Cards and Board Games - utilizatori.">
+    <meta name="keywords" content="cards, boardgames, games, utilizatori">
+    <link rel="stylesheet" href="/resurse/css/useri.css" type="text/css"/>
+    <title>Cards and Board Games - utilizatori</title>
+    <%- include("../fragmente/head") %>
+    <script type="text/javascript" src=/resurse/js/produse.js></script>
+</head>
+<body>
+<%- include("../fragmente/header") %>
 
-    <main>
+<main>
     <div class="afisaj">
         <h2>Useri</h2>
 
-		<table id="useri">
-		  <tr>
-			<th>id</th><th>Username</th><th>Nume</th><th>Prenume</th><th>Data</th><th>Rol</th>
-		  </tr>
+        <table id="useri">
+            <tr>
+                <th>id</th>
+                <th>Username</th>
+                <th>Nume</th>
+                <th>Prenume</th>
+                <th>E-mail</th>
+                <th>Parola</th>
+                <th>Data nastere</th>
+                <th>Data inregistrare</th>
+                <th>Culoare chat</th>
+                <th>Rol</th>
+                <th>Problema vedere</th>
+                <th>Fotografie</th>
+            </tr>
 
-		  <% for (var i = 0; i < useri.length; i++) { 
-				if(useri[i].rol=="comun"){
-				%>
-				<tr>
-				  <td><%= useri[i].id %></td>
-				  <td><%= useri[i].username %></td>
-				  <td><%= useri[i].nume %></td>
-				  <td><%= useri[i].email %></td>
-				  <%  
-					d=new Date(useri[i].data_adaugare)
-					sir_data=`${d.getDate()}/${d.getMonth()}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`
-				  %>
-				  <td><%=  sir_data %></td>
-				   <td><%=  useri[i].rol %></td>
-				</tr> 
-   
-				<% } %>			
-		  <% } %>
-		</table>
-		
-		<p>Sterge utilizator</p>
-		<form id="sterge" method="post" action="/sterge_utiliz">
-			<label>
-				Id: <input type="text" name="id_utiliz" value="">
-			</label>
-			
-			<input type="submit" value="Submit">
-		</form>
-	</div>
+            <%
+            const pageSize=4;
+            var temp=_href.split("=");
+            var currentPage=1;
+            if(temp.length===2)
+                currentPage=parseInt(temp[1]);
+            for (var i = (currentPage-1)*pageSize; i < (currentPage)*pageSize && i<useri.length; i++) {
+            %>
+                <tr>
+                    <td><%= useri[i].id %></td>
+                    <td><%= useri[i].username %></td>
+                    <td><%= useri[i].nume %></td>
+                    <td><%= useri[i].prenume %></td>
+                    <td><%= useri[i].email %></td>
+                    <td><%= useri[i].parola %></td>
+                    <%
+                        da = new Date(useri[i].data_nastere)
+                        data_nastere = `${da.getDate()}/${da.getMonth()+1}/${da.getFullYear()} ${da.getHours()}:${da.getMinutes()}:${da.getSeconds()}`
+                    %>
+                    <td><%= data_nastere %></td>
+                    <%
+                        d = new Date(useri[i].data_adaugare)
+                        sir_data = `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`
+                    %>
+                    <td><%= sir_data %></td>
+                    <td><%= useri[i].culoare_chat %></td>
+                    <td><%= useri[i].rol %></td>
+                    <td><%= useri[i].vedere %></td>
+                    <% if(useri[i].poza){ %>
+                        <td>
+                            <figure><img src="/poze_uploadate/<%= useri[i].username %>/<%= useri[i].poza %>"
+                                         alt="[imagine <%= useri[i].poza %>]"/></figure>
+                        </td>
+                    <% }else{ %>
+                        <td>Nu exista poza</td>
+                    <% } %>
+                </tr>
+
+            <% } %>
+        </table>
+        <%var prezDisabledString="inline-block";
+        if(currentPage===1)
+            prezDisabledString="none";
+        var nextDisabledString="inline-block";
+        if(useri.length-(currentPage-1)*pageSize<pageSize)
+            nextDisabledString="none";
+        %>
+        <a href="/useri?currentpage=<%-currentPage-1%>" style="display: <%-prezDisabledString%>">Prev</a>
+        <a href="/useri?currentpage=<%-currentPage+1%>" style="display: <%-nextDisabledString%>">Next</a>
+
+        <p>Sterge utilizator</p>
+        <form id="sterge" method="post" action="/sterge_utiliz">
+            <label>
+                Id: <input type="text" name="id_utiliz" value="">
+            </label>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </main>
 
 
-    <%- include("../fragmente/footer") %>
+<%- include("../fragmente/footer") %>
 
 </body>
 </html>

@@ -366,7 +366,7 @@ app.get("/useri", function(req, res){
     if(req?.utilizator?.areDreptul?.(Drepturi.vizualizareUtilizatori)){
         AccesBD.getInstanta().select({tabel:"utilizatori", campuri:["*"]}, function(err, rezQuery){
             console.log(err);
-            res.render("pagini/useri", {useri: rezQuery.rows});
+            res.render("pagini/useri", {useri: rezQuery.rows, _href: req.originalUrl});
         });
     }
     else{
@@ -400,7 +400,7 @@ app.get("/logout", function(req, res){
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////Cos virtual
 app.post("/produse_cos",function(req, res){
-    console.log("smaranda e proasta"+req.body);
+    console.log("test"+req.body);
     if(req.body.ids_prod.length!=0){
         //TO DO : cerere catre AccesBD astfel incat query-ul sa fi `select nume, descriere, pret, gramaj, imagine from prajituri where id in (lista de id-uri)`
         AccesBD.getInstanta().select({tabel:"produse", campuri:"nume,descriere,pret,imagine".split(","),conditiiAnd:[`id in (${req.body.ids_prod})`]},
@@ -443,7 +443,7 @@ async function genereazaPdf(stringHTML,numeFis, callback) {
 }
 
 app.post("/cumpara",function(req, res){
-    console.log("smaranda e foarte proasta"+req.body);
+    console.log("test"+req.body);
     console.log("Utilizator:", req?.utilizator);
     console.log("Utilizator:", req?.utilizator?.rol?.areDreptul?.(Drepturi.cumparareProduse));
     console.log("Drept:", req?.utilizator?.areDreptul?.(Drepturi.cumparareProduse));
@@ -518,27 +518,41 @@ app.get("/produse", function (req, res) {
     //TO DO query pentru a selecta toate produsele
     //TO DO se adauaga filtrarea dupa tipul produsului
     //TO DO se selecteaza si toate valorile din enum-ul categ_prajitura
-
-
-    client.query("select * from unnest(enum_range(null::categorie_produse))", function (err, rezCategorie) {
+    client.query("SELECT distinct(material) FROM produse", function (err,rezMaterial) {
         if (err) {
             console.log(err);
         } else {
-            client.query("select * from unnest(enum_range(null::producatori))", function (err, rezProducatori) {
+            client.query("SELECT MAX(puncte_loialitate) AS max_puncte FROM produse", function (err, rezMaxPuncte) {
                 if (err) {
                     console.log(err);
                 } else {
-                    let conditieWhere = "";
-                    if (req.query.tip) conditieWhere = `where categorie_produs='${req.query.tip}'`;
-                    client.query("select * from produse " + conditieWhere, function (err, rez) {
-                        console.log(300)
+                    client.query("select * from unnest(enum_range(null::categorie_produse))", function (err, rezCategorie) {
                         if (err) {
                             console.log(err);
-                            afisareEroare(res, 2);
-                        } else res.render("pagini/produse", {
-                            produse: rez.rows, optiuni: rezCategorie.rows, produc: rezProducatori.rows,
-                        });
-                    });
+                        } else {
+                            client.query("select * from unnest(enum_range(null::producatori))", function (err, rezProducatori) {
+                                if (err) {
+                                    console.log(err);
+                                } else {
+                                    let conditieWhere = "";
+                                    if (req.query.tip) conditieWhere = `where categorie_produs='${req.query.tip}'`;
+                                    client.query("select * from produse " + conditieWhere, function (err, rez) {
+                                        console.log(300)
+                                        if (err) {
+                                            console.log(err);
+                                            afisareEroare(res, 2);
+                                        } else res.render("pagini/produse", {
+                                            produse: rez.rows,
+                                            optiuni: rezCategorie.rows,
+                                            produc: rezProducatori.rows,
+                                            puncte: rezMaxPuncte.rows[0].max_puncte,
+                                            material: rezMaterial.rows.map(obj => obj.material),
+                                        });
+                                    });
+                                }
+                            })
+                        }
+                    })
                 }
             })
         }
@@ -550,7 +564,9 @@ app.get("/produs/:id", function (req, res) {
         if (err) {
             console.log(err);
             afisareEroare(res, 2);
-        } else res.render("pagini/produs", {prod: rezultat.rows[0]});
+        } else {
+            const files= fs.readdirSync("resurse/img/produse/bicycle-red")
+            res.render("pagini/produs", {prod: rezultat.rows[0], nrFiles: files.length});}
     });
 });
 

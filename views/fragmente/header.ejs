@@ -30,8 +30,6 @@
         </li>
         <li><a href="/cos-virtual">Cos</a></li>
         <li><a href="/inregistrare">Inregistrare</a></li>
-        <li><a href="">Contact</a></li>
-        <li><a href="">Suport Clienti</a></li>
             <% if(locals?.utilizator?.areDreptul?.(Drepturi.vizualizareUtilizatori)) { %>
         <li><div>Administrare</div>
             <ul>
@@ -54,13 +52,13 @@
             <div>Teme</div>
             <ul>
                 <li>
-                    <button id="normaltheme">Normal</button>
+                    <button class="btn btn-link theme" id="normaltheme">Normal</button>
                 </li>
                 <li>
-                    <button id="darktheme">Dark</button>
+                    <button class="btn btn-link theme" id="darktheme">Dark</button>
                 </li>
                 <li>
-                    <button id="vaporeontheme">Vaporeon</button>
+                    <button class="btn btn-link theme" id="vaporeontheme">Vaporeon</button>
                 </li>
             </ul>
         </li>
